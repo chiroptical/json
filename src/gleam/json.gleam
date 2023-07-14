@@ -360,3 +360,22 @@ if javascript {
   external fn do_preprocessed_array(from: List(Json)) -> Json =
     "../gleam_json_ffi.mjs" "array"
 }
+
+/// Useful when encoding arrays of objects
+///
+/// ## Usage
+///
+/// ```gleam
+/// > to_string(object([
+///   #("array_of_objects", array([
+///     object([
+///       #("x", string("y")),
+///     ]), of: json)
+///   ]))
+/// ])
+/// "{\"array_of_objects\":[{\"x\":\"y\"}]}"
+/// ```
+///
+pub fn json(from: Json) -> Json {
+  from
+}
